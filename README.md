@@ -1,4 +1,4 @@
-# Blackjack in command-line
+# Blackjack in the command-line
 Simple blackjack program (incomplete) to be played in the command line using Python and the random library.
 
 
