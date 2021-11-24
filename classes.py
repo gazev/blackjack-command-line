@@ -83,7 +83,7 @@ class Game:
         self.player.show_hand(0)
 
     def end(self):
-        if self.player.score(0) > 21 or self.dealer.score(0) > 21:
+        if self.player.score() > 21 or self.dealer.score() > 21:
             return True
         
         return False
