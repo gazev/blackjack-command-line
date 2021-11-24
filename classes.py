@@ -1,4 +1,5 @@
 import random
+import functools
 
 class Card:
     def __init__(self, number, suit):
@@ -13,7 +14,7 @@ class Card:
 
 class Deck:
     def __init__(self):
-        self.cards = [Card(a, b) for a in ['2', '3', '4', '5','6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'] for b in ['Hearts', 'Spades', 'Clubs', 'Diamonds']]
+        self.cards = [Card(a, b) for a in ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'] for b in ['Hearts', 'Spades', 'Clubs', 'Diamonds']]
         
     def shuffle(self):
         random.shuffle(self.cards)
@@ -23,11 +24,11 @@ class Deck:
 
 class Player:
     def __init__(self, name, deck):
-        self.name = name
         self.hand = [deck.hit()]
 
     def show_hand(self, n):
-        """ Displays hand if n is 0. If n is 1, displays only 1 card (used for dealer first show)
+        """ 
+        Displays hand if n is 0. If n is 1, displays only 1 card (used for dealer's first show)
         """
         aux_dic = {'Spades': chr(9824), 'Hearts': chr(9829), 'Clubs': chr(9827), 'Diamonds': chr(9830)}
         
@@ -52,17 +53,17 @@ class Player:
         self.hand.append(deck.hit())
 
     def score(self, n = 0):
+        hand = [self.hand[i].value for i in range(len(self.hand))]
+
         if n:
             return self.hand[0].value
-        score = 0
-        ace = 0
-        for card in self.hand:
-            score += card.value
-            if card.value == 11:
-                ace += 1
-        
-        if score > 21 and ace != 0:
-            score = score - ace*10
+
+        score = functools.reduce(lambda a, b: a + b, hand)
+        ace = len(list(filter(lambda x: x == 11, hand)))
+
+        while score > 21 and ace:
+            score -= 10
+            ace -= 1
 
         return score
 
