@@ -23,7 +23,7 @@ class Deck:
         return self.cards.pop()
 
 class Player:
-    def __init__(self, name, deck):
+    def __init__(self, deck):
         self.hand = [deck.hit()]
 
     def show_hand(self, n):
@@ -71,8 +71,8 @@ class Game:
     def __init__(self):
         self.deck = Deck()
         self.deck.shuffle()
-        self.player = Player('Player', self.deck)
-        self.dealer = Player('Dealer', self.deck)
+        self.player = Player(self.deck)
+        self.dealer = Player(self.deck)
         self.player.player_hit(self.deck)
         self.dealer.player_hit(self.deck)
 
