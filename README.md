@@ -2,7 +2,7 @@
 Simple blackjack program (incomplete) to be played in the command line using Python and the random library.
 
 
-To play the game simply clone the repository and, while in the file, run the command in the console:
+To play the game simply clone the repository and, while in the file, run the following command in the console:
 ```
 python3 blackjack.py
 ```
