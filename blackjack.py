@@ -7,7 +7,7 @@ def blackjack():
     game.display(1)
     while not game.end():
         x = input('Hit? [y/N]\n')
-        if x.lower() == 'y':
+        if x.lower() == 'y' or x == '':
             print('...................................................')
             print('Player Hit')
             game.player.player_hit(game.deck)
