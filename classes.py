@@ -46,7 +46,7 @@ class Player:
             print('')
         for i in range(len(self.hand) - n):
             print('+----+', end = ' ')
-        print('')
+        print('\n')
         return 0
 
     def player_hit(self, deck):

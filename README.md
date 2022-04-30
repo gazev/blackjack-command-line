@@ -10,11 +10,11 @@ python3 blackjack.py
 
 
 Here are some visual examples of the program.
-![Example1](imgs/VisualExample.png)
+![Example1](imgs/image1.png)
 
-![Example2](imgs/VisualExample2.png)
+![Example2](imgs/image2.png)
 
-![Example3](imgs/VisualExample3.png)
+![Example3](imgs/image3.png)
 
 
 
