@@ -1,5 +1,5 @@
 all:
-	pip3 install .
+	pip3 install . --log LOG_FILE
 
 clean:
 	rm blackjack.egg-info build -rf
