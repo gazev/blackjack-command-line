@@ -1,20 +1,27 @@
 # Blackjack in the command-line
-Simple blackjack program (incomplete) to be played in the command line using Python and the random library.
 
+Simple Python program to play Blackjack in the command line! 
 
-To play the game simply clone the repository and, while in the file, run the following command in the console:
+Install the package by simply running
 ```
-python3 blackjack.py
+make
 ```
 
+Alternatively you can just run
+```
+pip3 install .
+```
 
+Once installed simply run `blackjack` from your terminal to start playing!
 
-Here are some visual examples of the program.
+`make clean` will remove those dirty build packages once the package is installed.
+`make uninstall` can also be quickly be used if you don't like the package :(.
+
+You should have `.local/bin` on your $PATH (virtualenv also requires this for example). To do this add the following to your `.bashrc`, `.zshrc`, etc.
+```
+export PATH=$HOME/.local/bin:$PATH
+```
+
+Pictures
+
 ![Example1](imgs/image1.png)
-
-![Example2](imgs/image2.png)
-
-![Example3](imgs/image3.png)
-
-
-

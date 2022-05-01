@@ -1,5 +1,62 @@
+#! /usr/bin/env python3
+
+import time
 import random
 import functools
+
+
+# It's all spaghetti?
+# Always has been
+
+separator = '-' * 40 + '\n'
+
+def blackjack():
+    game = Game()
+
+    game.display(1)
+    while not game.end():
+        x = input('Hit? [y/N]\n')
+        if x.lower() == 'y' or x == '':
+            print(separator)
+            print(' ' * (int((len(separator) - len('Player Hit'))/2) - 1) + 'Player Hit\n')
+            game.player.player_hit(game.deck)
+        elif x.lower() == 'n':
+            break
+        else:
+            print('invalid input')
+            continue
+        game.display(1)
+
+    if game.end():
+        print('You busted!')
+        return 0
+
+    print(separator)
+    print(' ' * (int((len(separator) - len('Dealer reveals Card'))/2) - 1) + 'Dealer reveals card\n')
+    game.display(0)
+    while not game.end():
+        if game.dealer.score() < 17:
+            time.sleep(2.5)
+            print(separator)
+            print(' ' * (int((len(separator) - len('Dealer Hit'))/2) - 1) + 'Dealer Hit\n')
+            game.dealer.player_hit(game.deck)
+            game.display(0)
+        else:
+            break
+
+    if game.end():
+        print('Dealer Busted!')
+        return 0
+
+    if game.dealer.score() > game.player.score():
+        print(' ' * (int((len(separator) - len('You Lost!'))/2) - 1) + 'You Lost!')
+    elif game.dealer.score() < game.player.score():
+        print(' ' * (int((len(separator) - len('You Won!'))/2) - 1) + 'You won!')
+    else:
+        print(' ' * (int((len(separator) - len('Draw!'))/2) - 1) + 'Draw!')
+
+    return 0
+
 
 class Card:
     def __init__(self, number, suit):
@@ -87,3 +144,15 @@ class Game:
             return True
         
         return False
+
+def run():
+    while(True):
+        print("   ___ _         _    _         _\n  | _ ) |__ _ __| |__(_)__ _ __| |__\n  | _ \ / _` / _| / /| / _` / _| / /\n  |___/_\__,_\__|_\_\/ \__,_\__|_\_\ \n                 !__|__/            \n                  ___\n                / __|__ _ _ __  ___\n               | (_ / _` | '  \/ -_) \n                \___\__,_|_|_|_\___| \n")
+        blackjack()
+        print("\n" + separator)
+        x = input('Play again? [y/N]\n')
+        if(x.lower() == 'n'):
+            break
+
+if __name__ == '__main__':
+    exit(run())
